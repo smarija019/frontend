@@ -1,0 +1,32 @@
+<mat-toolbar>
+    <span>Registracija</span>
+  </mat-toolbar>
+  <mat-card class="my-card">
+<mat-card-content>
+    <form   (ngSubmit)="register()" class="my-form">
+       <mat-form-field class="full-width">
+              <mat-label>Ime</mat-label>
+              <input  [(ngModel)]="user.fname" name="fname"  matInput  placeholder="First name"   required>
+           </mat-form-field>
+           <mat-form-field class="full-width">
+              <mat-label>Prezime</mat-label>
+              <input  [(ngModel)]="user.lname" matInput  placeholder="Last Name" name="lname"  required>
+           </mat-form-field>
+           <mat-form-field class="full-width">
+              <mat-label>Uloga</mat-label>
+              <input [(ngModel)]="user.role" matInput  placeholder="Role" name="role" type="number"  required>
+           </mat-form-field>
+           <mat-form-field class="full-width">
+              <mat-label>Korisničko ime</mat-label>
+              <input [(ngModel)]="user.username" matInput  placeholder="Username" name="username" required>
+           </mat-form-field>
+           <mat-form-field class="full-width">
+              <mat-label>Lozinka</mat-label>
+              <input  [(ngModel)]="user.password" matInput  placeholder="Password"  name="password"  required>
+           </mat-form-field>
+           <mat-card-actions>
+            <button mat-raised-button  color="primary">REGISTRUJ</button>
+          </mat-card-actions>
+    </form>
+  </mat-card-content>
+</mat-card>
