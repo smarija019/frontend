@@ -23,6 +23,15 @@ import {MatSelectModule} from '@angular/material/select';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule} from '@angular/common/http';
 import { ApiService } from './api.service';
+import { LocationsComponent } from './locations/locations.component';
+import { CompaniesComponent } from './companies/companies.component';
+import { ContactsComponent } from './contacts/contacts.component';
+import { TypesComponent } from './types/types.component';
+import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { LitigationsComponent } from './litigations/litigations.component';
+
 
 
 
@@ -31,7 +40,15 @@ import { ApiService } from './api.service';
   declarations: [
     AppComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    LocationsComponent,
+    CompaniesComponent,
+    ContactsComponent,
+    TypesComponent,
+    HomeComponent,
+    HeaderComponent,
+    FooterComponent,
+    LitigationsComponent
   ],
   imports: [
     BrowserModule,

@@ -11,4 +11,8 @@ export class ApiService {
   {
     this.http.post('https://localhost:44358/api/registration', user).subscribe(res => {console.log(res)})
   }
+  postLogin(userLogin)
+  {
+    this.http.post('https://localhost:44358/api/login', userLogin).subscribe(res => {console.log(res)})
+  }
 }
