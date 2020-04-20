@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { ApiService } from '../api.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -11,17 +13,16 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class RegistrationComponent implements OnInit {
 
   registrationForm:any;
-  user ={
-      id: 0,
-      fname: null,
-      lname: null,
-      role: 0,
-      username: null,
-      password: null
+  UserApp ={
+      FirstName: null,
+      LastName: null,
+      Email: null,
+      Password: null,
+      Role: null,
   }
   test ={}
 
-  constructor(private api: ApiService, private fb: FormBuilder) { 
+  constructor(private auth: AuthService, private fb: FormBuilder, private router:Router, private service:AuthService) { 
   //   this.registrationForm= fb.group({
   //     this.user.fname: ['', Validators.required],
   //     lname: ['', Validators.required],
@@ -40,9 +41,19 @@ export class RegistrationComponent implements OnInit {
   //   password : this.registrationForm.password
 
   // }
-    this.api.postUser(this.user)
+    this.auth.register(this.UserApp)
   }
   ngOnInit(): void {
+    // if (localStorage.getItem('token') == null)
+    //   this.router.navigateByUrl('');
+    this.service.getUserProfile().subscribe(
+      res=>{
+
+      },
+      err =>{
+        console.log(err);
+      }
+    );
   }
 
 }

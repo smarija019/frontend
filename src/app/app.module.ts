@@ -30,7 +30,7 @@ import { TypesComponent } from './types/types.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { LitigationsComponent } from './litigations/litigations.component';
+import { LawsuitsComponent } from './lawsuits/lawsuits.component';
 
 
 
@@ -48,7 +48,7 @@ import { LitigationsComponent } from './litigations/litigations.component';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    LitigationsComponent
+    LawsuitsComponent
   ],
   imports: [
     BrowserModule,

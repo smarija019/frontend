@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,32 +11,33 @@ import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms'
 })
 export class LoginComponent implements OnInit {
 
-  // loginForm:any;
-  user ={
-    id: 0,
-    fname: null,
-    lname: null,
-    role: 0,
-    username: null,
-    password: null
-}
+  LoginModel={
+    Email:null,
+    Password: null
+  }
 
-  constructor(private api: ApiService, private fb: FormBuilder) { 
+  constructor(private auth: AuthService, private fb: FormBuilder, private router: Router) { 
 
-
-  //   this.loginForm= fb.group({
-  //     username: ['', Validators.required],
-  //     password: ['', Validators.required]
-  // })
   }
 
 
   ngOnInit(): void {
+    if(localStorage.getItem('token')){
+      this.router.navigateByUrl('/registration');
+    }
   }
-  login()
-  {
-    console.log(this.user)
-    this.api.postLogin(this.user)
+
+  login(){
+
+      console.log(this.LoginModel)
+      this.auth.login(this.LoginModel).subscribe((res:any) => {
+        localStorage.setItem('token', res.token);
+        this.router.navigateByUrl('/registration')
+      },
+      err=>{
+        console.log(err);
+      }
+      );
 
   }
 

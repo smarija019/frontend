@@ -8,18 +8,19 @@ import { CompaniesComponent } from './companies/companies.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { TypesComponent } from './types/types.component';
 import { HomeComponent } from './home/home.component';
-import { LitigationsComponent } from './litigations/litigations.component';
+import { AuthGuard } from './auth/auth.guard';
+import { LawsuitsComponent } from './lawsuits/lawsuits.component';
 
 
 const routes: Routes = [ 
   { path: '', component: LoginComponent},
   { path: 'home', component: HomeComponent},
-  { path: 'registration', component: RegistrationComponent},
+  { path: 'registration', component: RegistrationComponent, canActivate: [AuthGuard]},
   { path: 'locations', component: LocationsComponent},
   { path: 'companies', component: CompaniesComponent},
   { path: 'contacts', component: ContactsComponent},
   { path: 'types', component: TypesComponent},
-  { path: 'litigations', component: LitigationsComponent}
+  { path: 'lawsuits', component: LawsuitsComponent}
 
 ];
 
