@@ -9,7 +9,15 @@ export class DataService {
   private checkRoleSource = new BehaviorSubject(false);
   checkRoleCurrent = this.checkRoleSource.asObservable();
 
+  private loggedUserSource = new BehaviorSubject(false);
+  loggedUserCurrent = this.loggedUserSource.asObservable();
+
   checkRole(isAdmin: boolean) {
     this.checkRoleSource.next(isAdmin);
+  }
+
+  isLoggedIn(isLoggedIn: boolean){
+    this.loggedUserSource.next(isLoggedIn);
+
   }
 }

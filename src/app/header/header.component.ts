@@ -11,6 +11,7 @@ import { AuthService } from '../auth.service';
 export class HeaderComponent implements OnInit {
   userDetails;
   isAdmin;
+  isLoggedIn;
 
   constructor(
     private router: Router,
@@ -24,11 +25,13 @@ export class HeaderComponent implements OnInit {
     //   this.isAdmin = true;
     // }
     this.data.checkRoleCurrent.subscribe((isAdmin) => (this.isAdmin = isAdmin));
+    this.data.loggedUserCurrent.subscribe((isLoggedIn) => (this.isLoggedIn = isLoggedIn));
   }
 
   logout() {
     localStorage.removeItem('token');
     this.data.checkRole(false);
+    this.data.isLoggedIn(false);
     this.router.navigateByUrl('/login');
   }
 }

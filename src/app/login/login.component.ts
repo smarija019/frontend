@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
         } else {
           this.data.checkRole(false);
         }
+        this.data.isLoggedIn(true);
         this.router.navigateByUrl('/home');
       },
       (err) => {
