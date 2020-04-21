@@ -34,7 +34,7 @@ export class AuthService {
     //   error => {console.log(error.error[0].description)});
   }
   getUserProfile(){
-    var tokenHeader = new HttpHeaders({'Authorization': 'Bearer' + localStorage.getItem('token')})
-    return this.http.get('https://localhost:44358/api/userprofile', {headers: tokenHeader});
+    // var tokenHeader = new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('token')})
+    return this.http.get('https://localhost:44358/api/userprofile');
   }
 }

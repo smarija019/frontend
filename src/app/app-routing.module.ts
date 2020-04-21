@@ -13,13 +13,14 @@ import { LawsuitsComponent } from './lawsuits/lawsuits.component';
 
 
 const routes: Routes = [ 
-  { path: '', component: LoginComponent},
-  { path: 'home', component: HomeComponent},
+  { path: '', component: HomeComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   { path: 'registration', component: RegistrationComponent, canActivate: [AuthGuard]},
-  { path: 'locations', component: LocationsComponent},
-  { path: 'companies', component: CompaniesComponent},
-  { path: 'contacts', component: ContactsComponent},
-  { path: 'types', component: TypesComponent},
+  { path: 'locations', component: LocationsComponent,canActivate: [AuthGuard]},
+  { path: 'companies', component: CompaniesComponent, canActivate: [AuthGuard]},
+  { path: 'contacts', component: ContactsComponent, canActivate: [AuthGuard]},
+  { path: 'types', component: TypesComponent, canActivate: [AuthGuard]},
   { path: 'lawsuits', component: LawsuitsComponent}
 
 ];

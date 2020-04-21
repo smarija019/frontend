@@ -1,1 +1,18 @@
-
+<div class="wrapper">
+<table class="table table-bordered table-dark" *ngif="userDetails">
+    <tbody>
+      <tr>
+        <td >FirstName: {{userDetails.firstName}}</td>
+      </tr>
+      <tr>
+        <td >LastName: {{userDetails.lastName}}</td>
+      </tr>
+      <tr>
+        <td >Email: {{userDetails.userName}}</td>
+      </tr>
+      <tr>
+        <td >Role: {{userDetails.role}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

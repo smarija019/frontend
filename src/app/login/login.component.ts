@@ -22,8 +22,8 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit(): void {
-    if(localStorage.getItem('token')){
-      this.router.navigateByUrl('/registration');
+    if(localStorage.getItem('token') != null){
+      this.router.navigateByUrl('/home');
     }
   }
 
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       console.log(this.LoginModel)
       this.auth.login(this.LoginModel).subscribe((res:any) => {
         localStorage.setItem('token', res.token);
-        this.router.navigateByUrl('/registration')
+        this.router.navigateByUrl('/home')
       },
       err=>{
         console.log(err);

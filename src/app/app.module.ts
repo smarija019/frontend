@@ -21,7 +21,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatListModule} from '@angular/material/list';
 import {MatSelectModule} from '@angular/material/select';
 import { LoginComponent } from './login/login.component';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { ApiService } from './api.service';
 import { LocationsComponent } from './locations/locations.component';
 import { CompaniesComponent } from './companies/companies.component';
@@ -31,6 +31,7 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LawsuitsComponent } from './lawsuits/lawsuits.component';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 
 
@@ -73,7 +74,11 @@ import { LawsuitsComponent } from './lawsuits/lawsuits.component';
     HttpClientModule,
 
   ],
-  providers: [ApiService,],
+  providers: [ApiService,{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   exports: [MatSliderModule,
     MatNativeDateModule,
 
