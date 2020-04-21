@@ -16,12 +16,12 @@ const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'login', component: LoginComponent},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
-  { path: 'registration', component: RegistrationComponent, canActivate: [AuthGuard]},
-  { path: 'locations', component: LocationsComponent,canActivate: [AuthGuard]},
-  { path: 'companies', component: CompaniesComponent, canActivate: [AuthGuard]},
-  { path: 'contacts', component: ContactsComponent, canActivate: [AuthGuard]},
-  { path: 'types', component: TypesComponent, canActivate: [AuthGuard]},
-  { path: 'lawsuits', component: LawsuitsComponent}
+  { path: 'registration', component: RegistrationComponent, canActivate: [AuthGuard],data :{permittedRoles:['admin']}},
+  { path: 'locations', component: LocationsComponent,canActivate: [AuthGuard],data :{permittedRoles:['admin']}},
+  { path: 'companies', component: CompaniesComponent, canActivate: [AuthGuard],data :{permittedRoles:['admin']}},
+  { path: 'contacts', component: ContactsComponent, canActivate: [AuthGuard],data :{permittedRoles:['admin']}},
+  { path: 'types', component: TypesComponent, canActivate: [AuthGuard],data :{permittedRoles:['admin']}},
+  { path: 'lawsuits', component: LawsuitsComponent, canActivate: [AuthGuard],data :{permittedRoles:['admin','customer']}}
 
 ];
 

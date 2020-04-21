@@ -1,30 +1,46 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" routerLink="/home">Diligent</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" routerLink="/registration">Registration <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/companies">Companies</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" routerLink="/contacts">Contacts</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" routerLink="/locations">Locations</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" routerLink="/types">Types</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" routerLink="/lawsuits">Lawsuits</a>
-        </li>
-        <!-- <li class="nav-item dropdown">
+  <a class="navbar-brand" routerLink="/home">Diligent</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/registration" [hidden]="!isAdmin"
+          >Registration <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/companies" [hidden]="!isAdmin"
+          >Companies</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/contacts" [hidden]="!isAdmin"
+          >Contacts</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/locations" [hidden]="!isAdmin"
+          >Locations</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/types" [hidden]="!isAdmin">Types</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/lawsuits">Lawsuits</a>
+      </li>
+      <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Dropdown
             </a>
@@ -35,7 +51,9 @@
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
           </li> -->
-      </ul>
-        <button class="btn btn-outline btn-dark my-2 my-lg-0" (click)="logout()">Logout</button>
-    </div>
-  </nav>
+    </ul>
+    <button class="btn btn-outline btn-dark my-2 my-lg-0" (click)="logout()">
+      Logout
+    </button>
+  </div>
+</nav>

@@ -1,44 +1,55 @@
+import { DataService } from './../shared/data.service';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
+import {
+  FormBuilder,
+  Validators,
+  FormGroup,
+  FormControl,
+} from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  isAdmin;
+  LoginModel = {
+    Email: null,
+    Password: null,
+  };
 
-  LoginModel={
-    Email:null,
-    Password: null
-  }
-
-  constructor(private auth: AuthService, private fb: FormBuilder, private router: Router) { 
-
-  }
-
+  constructor(
+    private auth: AuthService,
+    private fb: FormBuilder,
+    private router: Router,
+    private data: DataService
+  ) {}
 
   ngOnInit(): void {
-    if(localStorage.getItem('token') != null){
+    if (localStorage.getItem('token') != null) {
       this.router.navigateByUrl('/home');
     }
   }
 
-  login(){
-
-      console.log(this.LoginModel)
-      this.auth.login(this.LoginModel).subscribe((res:any) => {
+  login() {
+    console.log(this.LoginModel);
+    this.auth.login(this.LoginModel).subscribe(
+      (res: any) => {
         localStorage.setItem('token', res.token);
-        this.router.navigateByUrl('/home')
+        if (this.auth.getRole().role == 'admin') {
+          this.data.checkRole(true);
+        } else {
+          this.data.checkRole(false);
+        }
+        this.router.navigateByUrl('/home');
       },
-      err=>{
+      (err) => {
         console.log(err);
       }
-      );
-
+    );
   }
-
 }

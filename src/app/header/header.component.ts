@@ -1,3 +1,4 @@
+import { DataService } from './../shared/data.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
@@ -5,20 +6,29 @@ import { AuthService } from '../auth.service';
 @Component({
   selector: 'header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
+  userDetails;
+  isAdmin;
 
-  userDetails
-  constructor(private router:Router, private service:AuthService) { }
+  constructor(
+    private router: Router,
+    private service: AuthService,
+    private data: DataService
+  ) {}
 
   ngOnInit(): void {
-    
-    
-  }
-  logout(){
-    localStorage.removeItem('token');
-    this.router.navigateByUrl('/login');
+    // if(this.service.getRole() == 'admin')
+    // {
+    //   this.isAdmin = true;
+    // }
+    this.data.checkRoleCurrent.subscribe((isAdmin) => (this.isAdmin = isAdmin));
   }
 
+  logout() {
+    localStorage.removeItem('token');
+    this.data.checkRole(false);
+    this.router.navigateByUrl('/login');
+  }
 }

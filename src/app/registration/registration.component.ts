@@ -7,53 +7,53 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.css']
+  styleUrls: ['./registration.component.css'],
 })
-
 export class RegistrationComponent implements OnInit {
+  registrationForm: any;
+  UserApp = {
+    FirstName: null,
+    LastName: null,
+    Email: null,
+    Password: null,
+    Role: null,
+  };
+  test = {};
 
-  registrationForm:any;
-  UserApp ={
-      FirstName: null,
-      LastName: null,
-      Email: null,
-      Password: null,
-      Role: null,
+  constructor(
+    private auth: AuthService,
+    private fb: FormBuilder,
+    private router: Router,
+    private service: AuthService
+  ) {
+    //   this.registrationForm= fb.group({
+    //     this.user.fname: ['', Validators.required],
+    //     lname: ['', Validators.required],
+    //     role: ['', Validators.required],
+    //     username: ['', Validators.required],
+    //     password: ['', Validators.required]
+    // })
   }
-  test ={}
+  register() {
+    // console.log(this.user.fname);
+    // this.user = {
+    //   firstname : this.registrationForm.fname,
+    //   lastname : this.registrationForm.lname,
+    //   role : this.registrationForm.role,
+    //   username : this.registrationForm.username,
+    //   password : this.registrationForm.password
 
-  constructor(private auth: AuthService, private fb: FormBuilder, private router:Router, private service:AuthService) { 
-  //   this.registrationForm= fb.group({
-  //     this.user.fname: ['', Validators.required],
-  //     lname: ['', Validators.required],
-  //     role: ['', Validators.required],
-  //     username: ['', Validators.required],
-  //     password: ['', Validators.required]
-  // })
-  }
-  register(){
- // console.log(this.user.fname);
-  // this.user = {
-  //   firstname : this.registrationForm.fname,
-  //   lastname : this.registrationForm.lname,
-  //   role : this.registrationForm.role,
-  //   username : this.registrationForm.username,
-  //   password : this.registrationForm.password
-
-  // }
-    this.auth.register(this.UserApp)
+    // }
+    this.auth.register(this.UserApp);
   }
   ngOnInit(): void {
     // if (localStorage.getItem('token') == null)
     //   this.router.navigateByUrl('');
     this.service.getUserProfile().subscribe(
-      res=>{
-
-      },
-      err =>{
+      (res) => {},
+      (err) => {
         console.log(err);
       }
     );
   }
-
 }
