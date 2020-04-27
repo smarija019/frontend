@@ -16,41 +16,33 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" routerLink="/registration" [hidden]="!isAdmin"
-          >Registration <span class="sr-only">(current)</span></a
+          >Registration</a
         >
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/users" [hidden]="!isAdmin">Users</a>
+      </li>
+      <li class="nav-item active">
         <a class="nav-link" routerLink="/companies" [hidden]="!isAdmin"
           >Companies</a
         >
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" routerLink="/contacts" [hidden]="!isAdmin"
           >Contacts</a
         >
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" routerLink="/locations" [hidden]="!isAdmin"
           >Locations</a
         >
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" routerLink="/types" [hidden]="!isAdmin">Types</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" routerLink="/lawsuits">Lawsuits</a>
       </li>
-      <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#" (click)="logout()">Log out</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li> -->
     </ul>
     <button class="btn btn-outline btn-dark my-2 my-lg-0" (click)="logout()">
       Logout

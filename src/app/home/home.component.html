@@ -1,4 +1,4 @@
-<div class="wrapper">
+<!-- <div class="wrapper">
   <table class="table table-bordered table-dark" *ngIf="userDetails">
     <tbody>
       <tr>
@@ -15,4 +15,110 @@
       </tr>
     </tbody>
   </table>
+</div> -->
+
+<div class="container bootstrap snippet" *ngIf="userDetails">
+  <div class="panel-body inf-content">
+    <div class="row">
+      <div class="col-md-4">
+        <img
+          alt=""
+          style="width: 600px;"
+          title=""
+          class="img-circle img-thumbnail isTooltip"
+          src="https://bootdey.com/img/Content/user-453533-fdadfd.png"
+          data-original-title="Usuario"
+        />
+        <ul title="Ratings" class="list-inline ratings text-center">
+          <li>
+            <a href="#"><span class="glyphicon glyphicon-star"></span></a>
+          </li>
+          <li>
+            <a href="#"><span class="glyphicon glyphicon-star"></span></a>
+          </li>
+          <li>
+            <a href="#"><span class="glyphicon glyphicon-star"></span></a>
+          </li>
+          <li>
+            <a href="#"><span class="glyphicon glyphicon-star"></span></a>
+          </li>
+          <li>
+            <a href="#"><span class="glyphicon glyphicon-star"></span></a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <div class="table-responsive">
+          <table
+            class="table table-condensed table-responsive table-user-information"
+          >
+            <tbody>
+              <tr>
+                <td>
+                  <strong>
+                    <span class="glyphicon glyphicon-user text-primary"></span>
+                    FirstName
+                  </strong>
+                </td>
+                <td class="text-primary">
+                  {{ userDetails.firstName }}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>
+                    <span class="glyphicon glyphicon-cloud text-primary"></span>
+                    Lastname
+                  </strong>
+                </td>
+                <td class="text-primary">
+                  {{ userDetails.lastName }}
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <strong>
+                    <span
+                      class="glyphicon glyphicon-bookmark text-primary"
+                    ></span>
+                    Username
+                  </strong>
+                </td>
+                <td class="text-primary">
+                  {{ userDetails.userName }}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>
+                    <span
+                      class="glyphicon glyphicon-envelope text-primary"
+                    ></span>
+                    Email
+                  </strong>
+                </td>
+                <td class="text-primary">
+                  {{ userDetails.userName }}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>
+                    <span
+                      class="glyphicon glyphicon-eye-open text-primary"
+                    ></span>
+                    Role
+                  </strong>
+                </td>
+                <td class="text-primary">
+                  {{ userDetails.role }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

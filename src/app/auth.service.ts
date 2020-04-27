@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
   register(user) {
     this.http
       .post<any>('https://localhost:44358/api/account/register', user)
       .subscribe(
         (result) => {
           if (result) {
-            //  this.router.navigate(['/dashboard/home']);
-            console.log(result);
-            localStorage.setItem('token', result);
+            this.router.navigateByUrl('/users');
           }
         },
         (error) => {
@@ -41,12 +40,16 @@ export class AuthService {
   }
 
   getRole() {
-    return JSON.parse(window.atob(localStorage.getItem('token').split('.')[1]));
+
+    if(localStorage.getItem('token') !=null)
+    {
+    return JSON.parse(window.atob(localStorage.getItem('token').split('.')[1])).role;
+    }
   }
 
   roleMatch(allowedRoles): boolean {
     var isMatch = false;
-    var userRole = this.getRole().role;
+    var userRole = this.getRole();
     allowedRoles.forEach((element) => {
       if (userRole == element) {
         isMatch = true;

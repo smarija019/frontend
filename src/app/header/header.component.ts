@@ -20,10 +20,11 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // if(this.service.getRole() == 'admin')
-    // {
-    //   this.isAdmin = true;
-    // }
+
+  //  if(this.service.getRole() == 'admin')
+  //   {
+  //      this.isAdmin = true;
+  //   }
     this.data.checkRoleCurrent.subscribe((isAdmin) => (this.isAdmin = isAdmin));
     this.data.loggedUserCurrent.subscribe((isLoggedIn) => (this.isLoggedIn = isLoggedIn));
   }

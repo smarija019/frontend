@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     this.auth.login(this.LoginModel).subscribe(
       (res: any) => {
         localStorage.setItem('token', res.token);
-        if (this.auth.getRole().role == 'admin') {
+        if (this.auth.getRole() == 'admin') {
           this.data.checkRole(true);
         } else {
           this.data.checkRole(false);

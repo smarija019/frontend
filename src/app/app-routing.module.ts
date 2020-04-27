@@ -10,6 +10,7 @@ import { TypesComponent } from './types/types.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth/auth.guard';
 import { LawsuitsComponent } from './lawsuits/lawsuits.component';
+import { UsersComponent } from './users/users.component';
 
 
 const routes: Routes = [ 
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   { path: 'registration', component: RegistrationComponent, canActivate: [AuthGuard],data :{permittedRoles:['admin']}},
+  { path: 'users', component: UsersComponent,canActivate: [AuthGuard],data :{permittedRoles:['admin']}},
   { path: 'locations', component: LocationsComponent,canActivate: [AuthGuard],data :{permittedRoles:['admin']}},
   { path: 'companies', component: CompaniesComponent, canActivate: [AuthGuard],data :{permittedRoles:['admin']}},
   { path: 'contacts', component: ContactsComponent, canActivate: [AuthGuard],data :{permittedRoles:['admin']}},

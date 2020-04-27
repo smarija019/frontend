@@ -1,0 +1,33 @@
+.wrapper{
+    
+    width:50%;
+}
+.table-heading {
+    margin: 10px 0;
+    display: inline-block;
+    width: 100%;
+}
+.table-heading input {
+    float: right;
+}
+.table-heading button {
+    float: left;
+}
+.custom-table{
+    margin: auto;
+    width: 100%;
+}
+.my-table a {
+    color: blue;
+    cursor: pointer;
+}
+.custom-thead{
+    text-align: center !important;
+}
+.custom-container{
+
+    text-align: center!important;
+}
+.add-button{
+    margin-right: 2%;
+}

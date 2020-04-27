@@ -1,0 +1,74 @@
+<h1 mat-dialog-title>
+    <strong>{{ action }}</strong>
+  </h1>
+  <div mat-dialog-content>
+    <mat-form-field *ngIf="action != 'Delete'; else elseTemplate">
+      <input
+        placeholder="{{ action }} Name"
+        matInput
+        [(ngModel)]="local_data.name"
+      />
+    </mat-form-field>
+    <mat-form-field *ngIf="action != 'Delete'">
+        <input
+          placeholder="{{ action }} Tel1"
+          matInput
+          [(ngModel)]="local_data.tel1"
+        />
+      </mat-form-field>
+      <mat-form-field *ngIf="action != 'Delete'">
+        <input
+          placeholder="{{ action }} Tel2"
+          matInput
+          [(ngModel)]="local_data.tel2"
+        />
+      </mat-form-field>
+      <mat-form-field *ngIf="action != 'Delete'">
+        <input
+          placeholder="{{ action }} Address"
+          matInput
+          [(ngModel)]="local_data.address"
+        />
+      </mat-form-field>
+      <mat-form-field *ngIf="action != 'Delete'">
+        <input
+          placeholder="{{ action }} Email"
+          matInput
+          [(ngModel)]="local_data.email"
+        />
+      </mat-form-field>
+      <mat-form-field *ngIf="action != 'Delete'">
+        <input
+          placeholder="{{ action }} Flag"
+          matInput
+          type="number"
+          [(ngModel)]="local_data.flag"
+        />
+      </mat-form-field>
+      <mat-form-field *ngIf="action != 'Delete'">
+        <input
+          placeholder="{{ action }} Profession"
+          matInput
+          [(ngModel)]="local_data.profession"
+        />
+      </mat-form-field>
+      <mat-form-field *ngIf="action != 'Delete'">
+        <input
+          placeholder="{{ action }} Company"
+          matInput
+          type="number"
+          [(ngModel)]="local_data.company"
+        />
+      </mat-form-field>
+    <ng-template #elseTemplate>
+      Sure to delete <b>{{ local_data.name }}</b
+      >?
+    </ng-template>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="doAction()">{{ action }}</button>
+    <button mat-button (click)="closeDialog()" mat-flat-button color="warn">
+      Cancel
+    </button>
+  </div>
+  

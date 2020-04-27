@@ -1,5 +1,5 @@
+
 import { Routes, RouterModule } from '@angular/router';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -32,6 +32,17 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LawsuitsComponent } from './lawsuits/lawsuits.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatTableModule} from '@angular/material/table';
+import { DialogboxComponent } from './dialogbox/dialogbox.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { CompanyDialogboxComponent } from './company-dialogbox/company-dialogbox.component';
+import { LocationDialogboxComponent } from './location-dialogbox/location-dialogbox.component';
+import { ContactDialogboxComponent } from './contact-dialogbox/contact-dialogbox.component';
+import { UsersComponent } from './users/users.component';
+import { UserDialogboxComponent } from './user-dialogbox/user-dialogbox.component';
+
+
 
 
 
@@ -49,7 +60,14 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    LawsuitsComponent
+    LawsuitsComponent,
+    DialogboxComponent,
+    CompanyDialogboxComponent,
+    LocationDialogboxComponent,
+    ContactDialogboxComponent,
+    UsersComponent,
+    UserDialogboxComponent
+
   ],
   imports: [
     BrowserModule,
@@ -72,6 +90,10 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     MatListModule,
     MatSelectModule,
     HttpClientModule,
+    MatDialogModule, 
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
 
   ],
   providers: [ApiService,{
@@ -96,6 +118,9 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     MatListModule,
     HttpClientModule,
 
+  ],
+  entryComponents: [
+    DialogboxComponent
   ],
   bootstrap: [AppComponent]
 })
