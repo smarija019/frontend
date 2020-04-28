@@ -1,1 +1,106 @@
-<p>lawsuits works!</p>
+<form #testForm="ngForm">
+  <div class="container text-center custom-container">
+    <div class="table-heading">
+      <button
+        (click)="openDialog('Add', {})"
+        color="primary"
+        class="btn btn-primary add-button"
+      >
+        Add lawsuit
+      </button>
+      <input
+        type="text"
+        (keyup)="applyFilter($event.target.value)"
+        placeholder="search for"
+        class="form-control-sm top-margin"
+      />
+    </div>
+    <table
+      mat-table
+      [dataSource]="userListMatTabDataSource"
+      #mytable
+      class="my-table mat-elevation-z8 custom-table"
+    >
+      <!-- Id Column -->
+      <ng-container matColumnDef="id" class="custom-thead">
+        <th mat-header-cell *matHeaderCellDef class="custom-thead">ID.</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+
+      <!-- Type Column -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef class="custom-thead">Date</th>
+        <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+      </ng-container>
+      <!-- Type Column -->
+      <ng-container matColumnDef="time">
+        <th mat-header-cell *matHeaderCellDef class="custom-thead">Time</th>
+        <td mat-cell *matCellDef="let element">{{ element.time }}</td>
+      </ng-container>
+      <!-- Type Column -->
+      <ng-container matColumnDef="location">
+        <th mat-header-cell *matHeaderCellDef class="custom-thead">Location</th>
+        <td mat-cell *matCellDef="let element">{{ element.location }}</td>
+      </ng-container>
+      <!-- Type Column -->
+      <ng-container matColumnDef="judge">
+        <th mat-header-cell *matHeaderCellDef class="custom-thead">Judge</th>
+        <td mat-cell *matCellDef="let element">{{ element.judge }}</td>
+      </ng-container>
+      <!-- Type Column -->
+      <ng-container matColumnDef="inst_type">
+        <th mat-header-cell *matHeaderCellDef class="custom-thead">
+          Inst. type
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.inst_type }}</td>
+      </ng-container>
+      <!-- Type Column -->
+      <ng-container matColumnDef="procedure_id">
+        <th mat-header-cell *matHeaderCellDef class="custom-thead">
+          Procedure identifier
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.procedure_id }}</td>
+      </ng-container>
+      <!-- Type Column -->
+      <ng-container matColumnDef="courtroom">
+        <th mat-header-cell *matHeaderCellDef class="custom-thead">
+          Courtroom
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.courtroom }}</td>
+      </ng-container>
+      <!-- Type Column -->
+      <ng-container matColumnDef="plaintiff">
+        <th mat-header-cell *matHeaderCellDef class="custom-thead">
+          Plaintiff
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.plaintiff }}</td>
+      </ng-container>
+      <!-- Type Column -->
+      <ng-container matColumnDef="defendant">
+        <th mat-header-cell *matHeaderCellDef class="custom-thead">
+          Defendant
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.defendant }}</td>
+      </ng-container>
+      <ng-container matColumnDef="note">
+        <th mat-header-cell *matHeaderCellDef class="custom-thead">Note</th>
+        <td mat-cell *matCellDef="let element">{{ element.note }}</td>
+      </ng-container>
+      <ng-container matColumnDef="procedure_type">
+        <th mat-header-cell *matHeaderCellDef class="custom-thead">Type</th>
+        <td mat-cell *matCellDef="let element">{{ element.procedure_type }}</td>
+      </ng-container>
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef class="custom-thead">Action</th>
+        <td mat-cell *matCellDef="let element" class="action-link">
+          <a (click)="openDialog('Update', element)">Edit</a> |
+          <a (click)="openDialog('Delete', element)">Delete</a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</form>

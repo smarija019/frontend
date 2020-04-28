@@ -41,7 +41,8 @@ import { LocationDialogboxComponent } from './location-dialogbox/location-dialog
 import { ContactDialogboxComponent } from './contact-dialogbox/contact-dialogbox.component';
 import { UsersComponent } from './users/users.component';
 import { UserDialogboxComponent } from './user-dialogbox/user-dialogbox.component';
-
+import { LawsuitDialogboxComponent } from './lawsuit-dialogbox/lawsuit-dialogbox.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -66,7 +67,8 @@ import { UserDialogboxComponent } from './user-dialogbox/user-dialogbox.componen
     LocationDialogboxComponent,
     ContactDialogboxComponent,
     UsersComponent,
-    UserDialogboxComponent
+    UserDialogboxComponent,
+    LawsuitDialogboxComponent
 
   ],
   imports: [
@@ -94,6 +96,7 @@ import { UserDialogboxComponent } from './user-dialogbox/user-dialogbox.componen
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
+    NgbModule,
 
   ],
   providers: [ApiService,{

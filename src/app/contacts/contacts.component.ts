@@ -3,14 +3,14 @@ import { ContactService } from '../services/contact.service';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ContactDialogboxComponent } from '../contact-dialogbox/contact-dialogbox.component';
+import { CompanyService } from '../services/company.service';
 
 @Component({
   selector: 'app-contacts',
   templateUrl: './contacts.component.html',
-  styleUrls: ['./contacts.component.css']
+  styleUrls: ['./contacts.component.css'],
 })
 export class ContactsComponent implements OnInit {
-
   contact = {
     name: null,
     tel1: null,
@@ -41,7 +41,18 @@ export class ContactsComponent implements OnInit {
     return obs;
   }
 
-  displayedColumns: string[] = ['id', 'name','tel1','tel2','address','email','flag','profession','company', 'action'];
+  displayedColumns: string[] = [
+    'id',
+    'name',
+    'tel1',
+    'tel2',
+    'address',
+    'email',
+    'flag',
+    'profession',
+    'company',
+    'action',
+  ];
 
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
   constructor(public dialog: MatDialog, private contactS: ContactService) {}
@@ -117,5 +128,4 @@ export class ContactsComponent implements OnInit {
   applyFilter(filterValue: string) {
     this.userListMatTabDataSource.filter = filterValue.trim().toLowerCase();
   }
-
 }

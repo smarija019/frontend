@@ -25,30 +25,11 @@ export class RegistrationComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private service: AuthService
-  ) {
-    //   this.registrationForm= fb.group({
-    //     this.user.fname: ['', Validators.required],
-    //     lname: ['', Validators.required],
-    //     role: ['', Validators.required],
-    //     username: ['', Validators.required],
-    //     password: ['', Validators.required]
-    // })
-  }
+  ) {}
   register() {
-    // console.log(this.user.fname);
-    // this.user = {
-    //   firstname : this.registrationForm.fname,
-    //   lastname : this.registrationForm.lname,
-    //   role : this.registrationForm.role,
-    //   username : this.registrationForm.username,
-    //   password : this.registrationForm.password
-
-    // }
     this.auth.register(this.UserApp);
   }
   ngOnInit(): void {
-    // if (localStorage.getItem('token') == null)
-    //   this.router.navigateByUrl('');
     this.service.getUserProfile().subscribe(
       (res) => {},
       (err) => {
