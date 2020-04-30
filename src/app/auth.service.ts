@@ -24,26 +24,16 @@ export class AuthService {
 
   login(user) {
     return this.http.post('https://localhost:44358/api/account/login', user);
-
-    // this.http.post('https://localhost:44358/api/account', user).subscribe(
-    //   result => {
-    //     if (result) {
-    //       //  this.router.navigate(['/dashboard/home']);
-    //       console.log(result)
-    //     }
-    //   },
-    //   error => {console.log(error.error[0].description)});
   }
   getUserProfile() {
-    // var tokenHeader = new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('token')})
     return this.http.get('https://localhost:44358/api/userprofile');
   }
 
   getRole() {
-
-    if(localStorage.getItem('token') !=null)
-    {
-    return JSON.parse(window.atob(localStorage.getItem('token').split('.')[1])).role;
+    if (localStorage.getItem('token') != null) {
+      return JSON.parse(
+        window.atob(localStorage.getItem('token').split('.')[1])
+      ).role;
     }
   }
 

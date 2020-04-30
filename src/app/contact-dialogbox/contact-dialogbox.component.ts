@@ -29,13 +29,11 @@ export class ContactDialogboxComponent implements OnInit {
     @Optional() @Inject(MAT_DIALOG_DATA) public data: ContactData,
     private companyS: CompanyService
   ) {
-    console.log(data);
     this.local_data = { ...data };
     this.action = this.local_data.action;
     this.companyS.getCompanies().subscribe(
       (res: any) => {
         this.companies = res;
-        console.log('rezultati', res);
       },
       (err) => {
         console.log(err);
@@ -45,7 +43,6 @@ export class ContactDialogboxComponent implements OnInit {
   ngOnInit(): void {}
 
   doAction() {
-    console.log(this.local_data);
     this.dialogRef.close({ event: this.action, data: this.local_data });
   }
 

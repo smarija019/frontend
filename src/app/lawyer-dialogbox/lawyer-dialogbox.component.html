@@ -1,46 +1,46 @@
 <h1 mat-dialog-title>
-    <strong>{{ action }}</strong>
-  </h1>
-  <div mat-dialog-content>
-    <mat-form-field *ngIf="action != 'Delete' && lawsuits != null">
-      <mat-label>Select procedure id</mat-label>
-      <mat-select
-        [(ngModel)]="local_data.lawsuit_id"
-        id="inputState"
+  <strong>{{ action }}</strong>
+</h1>
+<div mat-dialog-content>
+  <mat-form-field *ngIf="action != 'Delete' && lawsuits != null">
+    <mat-label>Select procedure id</mat-label>
+    <mat-select
+      [(ngModel)]="local_data.lawsuit_id"
+      id="inputState"
+      class="form-control"
+    >
+      <mat-option
+        *ngFor="let lawsuit of lawsuits"
+        [value]="lawsuit.id"
         class="form-control"
+        >{{ lawsuit.procedure_id }}</mat-option
       >
-        <mat-option
-          *ngFor="let lawsuit of lawsuits"
-          [value]="lawsuit.id"
-          class="form-control"
-          >{{ lawsuit.procedure_id }}</mat-option
-        >
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field *ngIf="action != 'Delete' && users != null">
-      <mat-label>Select user</mat-label>
-      <mat-select
-        [(ngModel)]="local_data.user_id"
-        id="inputState"
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field *ngIf="action != 'Delete' && users != null">
+    <mat-label>Select user</mat-label>
+    <mat-select
+      [(ngModel)]="local_data.user_id"
+      id="inputState"
+      class="form-control"
+    >
+      <mat-option
+        *ngFor="let user of users"
+        [value]="user.id"
         class="form-control"
+        >{{ user.lastName }} {{ user.firstName }}</mat-option
       >
-        <mat-option
-          *ngFor="let user of users"
-          [value]="user.id"
-          class="form-control"
-          >{{ user.lastName }} {{user.firstName}}</mat-option
-        >
-      </mat-select>
-    </mat-form-field>
-  
-    <ng-template #elseTemplate>
-      Sure to delete <b>{{ local_data.procedure_id }}</b
-      >?
-    </ng-template>
-  </div>
-  <div mat-dialog-actions>
-    <button mat-button (click)="doAction()">{{ action }}</button>
-    <button mat-button (click)="closeDialog()" mat-flat-button color="warn">
-      Cancel
-    </button>
-  </div>
+    </mat-select>
+  </mat-form-field>
+
+  <ng-template #elseTemplate>
+    Sure to delete <b>{{ local_data.procedure_id }}</b
+    >?
+  </ng-template>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="doAction()">{{ action }}</button>
+  <button mat-button (click)="closeDialog()" mat-flat-button color="warn">
+    Cancel
+  </button>
+</div>

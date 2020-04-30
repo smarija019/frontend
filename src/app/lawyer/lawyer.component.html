@@ -2,124 +2,177 @@
   <input type="checkbox" [(ngModel)]="showhideMyLawsuits" /> Show my lawsuits
 </label>
 <form #testForm="ngForm" *ngIf="!showhideMyLawsuits">
-    <div class="container text-center custom-container">
-      <div class="table-heading">
-        <button
-          (click)="openDialog('Add', {})"
-          color="primary"
-          class="btn btn-primary add-button"
-        >
-          Add lawyer for lawsuit
-        </button>
-        <input
-          type="text"
-          (keyup)="applyFilter($event.target.value)"
-          placeholder="search for"
-          class="form-control-sm top-margin"
-        />
-      </div>
-      <table
-        mat-table
-        [dataSource]="userListMatTabDataSource"
-        #mytable
-        class="my-table mat-elevation-z8 custom-table"
-        matSort
-        (matSortChange)="onMatSortChange()"
+  <div class="container text-center custom-container">
+    <div class="table-heading">
+      <button
+        (click)="openDialog('Add', {})"
+        color="primary"
+        class="btn btn-primary add-button"
       >
-        <!-- Id Column -->
-        <ng-container matColumnDef="id" class="custom-thead">
-          <th mat-header-cell *matHeaderCellDef class="custom-thead" mat-sort-header>ID.</th>
-          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-        </ng-container>
-  
-        <!-- Name Column -->
-        <ng-container matColumnDef="firstName">
-          <th mat-header-cell *matHeaderCellDef class="custom-thead" mat-sort-header>Lawyer FirstName</th>
-          <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="lastName">
-            <th mat-header-cell *matHeaderCellDef class="custom-thead" mat-sort-header>Lawyer LastName</th>
-            <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
-          </ng-container>
-        <!-- Address Column -->
-        <ng-container matColumnDef="procedure_id">
-          <th mat-header-cell *matHeaderCellDef class="custom-thead" mat-sort-header>Procedure identifier</th>
-          <td mat-cell *matCellDef="let element">{{ element.procedure_id }}</td>
-        </ng-container>
-  
-        <!-- Action Column -->
-        <ng-container matColumnDef="action">
-          <th mat-header-cell *matHeaderCellDef class="custom-thead" >Action</th>
-          <td mat-cell *matCellDef="let element" class="action-link">
-            <a *ngIf="userDetails.userId == element.userId" (click)="openDialog('Update', element)">Edit</a> |
-            <a *ngIf="userDetails.userId== element.userId" (click)="openDialog('Delete', element)">Delete</a>
-          </td>
-        </ng-container>
-  
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      </table>
+        Add lawyer for lawsuit
+      </button>
+      <input
+        type="text"
+        (keyup)="applyFilter($event.target.value)"
+        placeholder="search for"
+        class="form-control-sm top-margin"
+      />
     </div>
-  </form>
-  <form #testForm="ngForm" *ngIf="showhideMyLawsuits">
-    <div class="container text-center custom-container">
-      <div class="table-heading">
-        <button
-          (click)="openDialog('Add', {})"
-          color="primary"
-          class="btn btn-primary add-button"
+    <table
+      mat-table
+      [dataSource]="userListMatTabDataSource"
+      #mytable
+      class="my-table mat-elevation-z8 custom-table"
+      matSort
+      (matSortChange)="onMatSortChange()"
+    >
+      <ng-container matColumnDef="id" class="custom-thead">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          class="custom-thead"
+          mat-sort-header
         >
-          Add lawyer for lawsuit
-        </button>
-        <input
-          type="text"
-          (keyup)="applyFilter($event.target.value)"
-          placeholder="search for"
-          class="form-control-sm top-margin"
-        />
-      </div>
-      <table
-        mat-table
-        [dataSource]="myLawsuitsData"
-        #mytable
-        class="my-table mat-elevation-z8 custom-table"
-        matSort
-        (matSortChange)="onMatSortChange()"
-      >
-        <!-- Id Column -->
-        <ng-container matColumnDef="id" class="custom-thead">
-          <th mat-header-cell *matHeaderCellDef class="custom-thead" mat-sort-header>ID.</th>
-          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-        </ng-container>
-  
-        <!-- Name Column -->
-        <ng-container matColumnDef="firstName">
-          <th mat-header-cell *matHeaderCellDef class="custom-thead" mat-sort-header>Lawyer FirstName</th>
-          <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
-        </ng-container>
+          ID.
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+      <ng-container matColumnDef="firstName">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          class="custom-thead"
+          mat-sort-header
+        >
+          Lawyer FirstName
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+      </ng-container>
 
-        <ng-container matColumnDef="lastName">
-            <th mat-header-cell *matHeaderCellDef class="custom-thead" mat-sort-header>Lawyer LastName</th>
-            <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
-          </ng-container>
-        <!-- Address Column -->
-        <ng-container matColumnDef="procedure_id">
-          <th mat-header-cell *matHeaderCellDef class="custom-thead" mat-sort-header>Procedure identifier</th>
-          <td mat-cell *matCellDef="let element">{{ element.procedure_id }}</td>
-        </ng-container>
-  
-        <!-- Action Column -->
-        <ng-container matColumnDef="action">
-          <th mat-header-cell *matHeaderCellDef class="custom-thead" >Action</th>
-          <td mat-cell *matCellDef="let element" class="action-link">
-            <a  (click)="openDialog('Update', element)">Edit</a> |
-            <a  (click)="openDialog('Delete', element)">Delete</a>
-          </td>
-        </ng-container>
-  
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      </table>
+      <ng-container matColumnDef="lastName">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          class="custom-thead"
+          mat-sort-header
+        >
+          Lawyer LastName
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
+      </ng-container>
+      <ng-container matColumnDef="procedure_id">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          class="custom-thead"
+          mat-sort-header
+        >
+          Procedure identifier
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.procedure_id }}</td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef class="custom-thead">Action</th>
+        <td mat-cell *matCellDef="let element" class="action-link">
+          <a
+            *ngIf="userDetails.userId == element.userId"
+            (click)="openDialog('Update', element)"
+            >Edit</a
+          >
+          |
+          <a
+            *ngIf="userDetails.userId == element.userId"
+            (click)="openDialog('Delete', element)"
+            >Delete</a
+          >
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</form>
+<form #testForm="ngForm" *ngIf="showhideMyLawsuits">
+  <div class="container text-center custom-container">
+    <div class="table-heading">
+      <button
+        (click)="openDialog('Add', {})"
+        color="primary"
+        class="btn btn-primary add-button"
+      >
+        Add lawyer for lawsuit
+      </button>
+      <input
+        type="text"
+        (keyup)="applyFilter($event.target.value)"
+        placeholder="search for"
+        class="form-control-sm top-margin"
+      />
     </div>
-  </form>
+    <table
+      mat-table
+      [dataSource]="myLawsuitsData"
+      #mytable
+      class="my-table mat-elevation-z8 custom-table"
+      matSort
+      (matSortChange)="onMatSortChange()"
+    >
+      <ng-container matColumnDef="id" class="custom-thead">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          class="custom-thead"
+          mat-sort-header
+        >
+          ID.
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+      <ng-container matColumnDef="firstName">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          class="custom-thead"
+          mat-sort-header
+        >
+          Lawyer FirstName
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="lastName">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          class="custom-thead"
+          mat-sort-header
+        >
+          Lawyer LastName
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
+      </ng-container>
+      <ng-container matColumnDef="procedure_id">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          class="custom-thead"
+          mat-sort-header
+        >
+          Procedure identifier
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.procedure_id }}</td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef class="custom-thead">Action</th>
+        <td mat-cell *matCellDef="let element" class="action-link">
+          <a (click)="openDialog('Update', element)">Edit</a> |
+          <a (click)="openDialog('Delete', element)">Delete</a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</form>

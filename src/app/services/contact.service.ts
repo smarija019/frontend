@@ -16,37 +16,35 @@ export class ContactService {
 
   postContact(contact) {
     return this.http.post('https://localhost:44358/api/contact', contact).pipe(
-      tap((res) => console.log('First result', res)),
+      tap((res) => {}),
       concatMap((res) => this.http.get('https://localhost:44358/api/contact')),
       tap((res) => {
         this.serviceRes = res;
-        console.log(this.serviceRes);
-        console.log(res);
       })
     );
   }
 
   deleteContact(id) {
     return this.http.delete('https://localhost:44358/api/contact/' + id).pipe(
-      tap((res) => console.log('First result', res)),
+      tap((res) => {}),
       concatMap((res) => this.http.get('https://localhost:44358/api/contact')),
       tap((res) => {
         this.serviceRes = res;
-        console.log(this.serviceRes);
-        console.log(res);
       })
     );
   }
 
   putContact(id, contact) {
-    return this.http.put('https://localhost:44358/api/contact/' + id, contact).pipe(
-      tap((res) => console.log('First result', res)),
-      concatMap((res) => this.http.get('https://localhost:44358/api/contact')),
-      tap((res) => {
-        this.serviceRes = res;
-        console.log(this.serviceRes);
-        console.log(res);
-      })
-    );
+    return this.http
+      .put('https://localhost:44358/api/contact/' + id, contact)
+      .pipe(
+        tap((res) => {}),
+        concatMap((res) =>
+          this.http.get('https://localhost:44358/api/contact')
+        ),
+        tap((res) => {
+          this.serviceRes = res;
+        })
+      );
   }
 }

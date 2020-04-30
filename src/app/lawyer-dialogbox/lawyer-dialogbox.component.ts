@@ -7,7 +7,7 @@ import { LocationService } from '../services/location.service';
 import { UserService } from '../services/user.service';
 
 export interface LawyerData {
-  user_id:string,
+  user_id: string;
   lawsuit_id: number;
   id: number;
 }
@@ -19,15 +19,14 @@ export interface LawyerData {
 export class LawyerDialogboxComponent implements OnInit {
   action: string;
   local_data: any;
-  users:null;
-  lawsuits:null;
-
+  users: null;
+  lawsuits: null;
 
   constructor(
     public dialogRef: MatDialogRef<LawyerDialogboxComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: LawyerData,
     private userS: UserService,
-    private lawsuitS: LawsuitService,
+    private lawsuitS: LawsuitService
   ) {
     this.local_data = { ...data };
     this.action = this.local_data.action;

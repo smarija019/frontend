@@ -1,41 +1,50 @@
 <form #testForm="ngForm">
-    <div class="container text-center custom-container">
-      <div class="table-heading">
-        <button
-          (click)="openDialog('Add', {})"
-          color="primary"
-          class="btn btn-primary add-button"
-        >
-          Add location
-        </button>
-        <input
-          type="text"
-          (keyup)="applyFilter($event.target.value)"
-          placeholder="search for"
-          class="form-control-sm top-margin"
-        />
-      </div>
-      <table
-        mat-table
-        [dataSource]="userListMatTabDataSource"
-        #mytable
-        class="my-table mat-elevation-z8 custom-table"
-        matSort
-        (matSortChange)="onMatSortChange()"
+  <div class="container text-center custom-container">
+    <div class="table-heading">
+      <button
+        (click)="openDialog('Add', {})"
+        color="primary"
+        class="btn btn-primary add-button"
       >
-        <!-- Id Column -->
-        <ng-container matColumnDef="id" class="custom-thead">
-          <th mat-header-cell *matHeaderCellDef class="custom-thead" mat-sort-header>ID.</th>
-          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-        </ng-container>
-  
-        <!-- Location Column -->
-        <ng-container matColumnDef="location">
-          <th mat-header-cell *matHeaderCellDef class="custom-thead" mat-sort-header>Location</th>
-          <td mat-cell *matCellDef="let element">{{ element.location }}</td>
-        </ng-container>
-  
-      <!-- Action Column -->
+        Add location
+      </button>
+      <input
+        type="text"
+        (keyup)="applyFilter($event.target.value)"
+        placeholder="search for"
+        class="form-control-sm top-margin"
+      />
+    </div>
+    <table
+      mat-table
+      [dataSource]="userListMatTabDataSource"
+      #mytable
+      class="my-table mat-elevation-z8 custom-table"
+      matSort
+      (matSortChange)="onMatSortChange()"
+    >
+      <ng-container matColumnDef="id" class="custom-thead">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          class="custom-thead"
+          mat-sort-header
+        >
+          ID.
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+      <ng-container matColumnDef="location">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          class="custom-thead"
+          mat-sort-header
+        >
+          Location
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.location }}</td>
+      </ng-container>
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef class="custom-thead">Action</th>
         <td mat-cell *matCellDef="let element" class="action-link">
@@ -43,10 +52,8 @@
           <a (click)="openDialog('Delete', element)">Delete</a>
         </td>
       </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      </table>
-    </div>
-  </form>
-  
-  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</form>

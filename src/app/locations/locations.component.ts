@@ -8,10 +8,9 @@ import { MatSort } from '@angular/material/sort';
 @Component({
   selector: 'app-locations',
   templateUrl: './locations.component.html',
-  styleUrls: ['./locations.component.css']
+  styleUrls: ['./locations.component.css'],
 })
 export class LocationsComponent implements OnInit {
-
   location = {
     location: null,
   };

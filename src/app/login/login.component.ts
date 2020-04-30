@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log(this.LoginModel);
     this.auth.login(this.LoginModel).subscribe(
       (res: any) => {
         localStorage.setItem('token', res.token);

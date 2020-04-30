@@ -140,7 +140,6 @@ export class LawsuitsComponent implements OnInit {
     this.lawsuit.defendant = data.defendant;
     this.lawsuit.note = data.note;
     this.lawsuit.procedure_type = data.procedure_type;
-    console.log(this.lawsuit);
     this.lawsuitS.putLawsuit(data.id, this.lawsuit).subscribe(
       (result) => {
         this.userListMatTabDataSource.data = this.lawsuitS.serviceRes;

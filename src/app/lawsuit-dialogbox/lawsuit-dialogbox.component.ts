@@ -40,7 +40,7 @@ export class LawsuitDialogboxComponent implements OnInit {
     private typeS: TypeService,
     private locationS: LocationService
   ) {
-    this.dateChanged=false;
+    this.dateChanged = false;
     this.local_data = { ...data };
     this.action = this.local_data.action;
     this.contactS.getContacts().subscribe(
@@ -71,20 +71,18 @@ export class LawsuitDialogboxComponent implements OnInit {
   ngOnInit(): void {}
 
   doAction() {
-    if(this.dateChanged)
-    {
-      this.local_data.dateChanged=true;
-    }
-    else{
-      this.local_data.dateChanged=false;
+    if (this.dateChanged) {
+      this.local_data.dateChanged = true;
+    } else {
+      this.local_data.dateChanged = false;
     }
 
     this.local_data.time = this.time;
     this.dialogRef.close({ event: this.action, data: this.local_data });
   }
 
-  dateChange(){
-    this.dateChanged=true;
+  dateChange() {
+    this.dateChanged = true;
   }
   closeDialog() {
     this.dialogRef.close({ event: 'Cancel' });

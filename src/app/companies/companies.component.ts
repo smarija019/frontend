@@ -8,7 +8,6 @@ import { CompanyService } from '../services/company.service';
 import { CompanyDialogboxComponent } from '../company-dialogbox/company-dialogbox.component';
 import { MatSort } from '@angular/material/sort';
 
-
 @Component({
   selector: 'app-companies',
   templateUrl: './companies.component.html',
@@ -39,7 +38,7 @@ export class CompaniesComponent implements OnInit {
     return obs;
   }
 
-  displayedColumns: string[] = ['id', 'name','address', 'action'];
+  displayedColumns: string[] = ['id', 'name', 'address', 'action'];
 
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -47,7 +46,7 @@ export class CompaniesComponent implements OnInit {
 
   openDialog(action, obj) {
     obj.action = action;
-    const dialogRef = this.dialog.open(CompanyDialogboxComponent , {
+    const dialogRef = this.dialog.open(CompanyDialogboxComponent, {
       width: '250px',
       data: obj,
     });

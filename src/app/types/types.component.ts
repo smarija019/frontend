@@ -8,10 +8,9 @@ import { MatSort } from '@angular/material/sort';
 @Component({
   selector: 'app-types',
   templateUrl: './types.component.html',
-  styleUrls: ['./types.component.css']
+  styleUrls: ['./types.component.css'],
 })
 export class TypesComponent implements OnInit {
-
   type = {
     type: null,
   };
@@ -101,5 +100,4 @@ export class TypesComponent implements OnInit {
   onMatSortChange() {
     this.userListMatTabDataSource.sort = this.sort;
   }
-
 }

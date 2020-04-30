@@ -9,7 +9,7 @@ import { MatSort } from '@angular/material/sort';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit {
   user = {
@@ -39,11 +39,23 @@ export class UsersComponent implements OnInit {
     return obs;
   }
 
-  displayedColumns: string[] = ['id', 'Role','FirstName','LastName','UserName','Email', 'action'];
+  displayedColumns: string[] = [
+    'id',
+    'Role',
+    'FirstName',
+    'LastName',
+    'UserName',
+    'Email',
+    'action',
+  ];
 
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  constructor(public dialog: MatDialog, private userS: UserService, private router: Router) {}
+  constructor(
+    public dialog: MatDialog,
+    private userS: UserService,
+    private router: Router
+  ) {}
 
   openDialog(action, obj) {
     obj.action = action;
@@ -55,8 +67,7 @@ export class UsersComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result.event == 'Add') {
         this.addRowData(result.data);
-      }
-      else if (result.event == 'Delete') {
+      } else if (result.event == 'Delete') {
         this.deleteRowData(result.data);
       }
     });
@@ -78,22 +89,6 @@ export class UsersComponent implements OnInit {
     );
     this.table.renderRows();
   }
-  // updateRowData(data) {
-  //   this.user.firstName = data.firstName;
-  //   this.user.lastName = data.lastName;
-  //   this.user.role = data.role;
-  //   this.user.email = data.email;
-  //   this.user.userName = data.userName;
-  //   this.userS.putUser(data.id, this.user).subscribe(
-  //     (result) => {
-  //       this.userListMatTabDataSource.data = this.userS.serviceRes;
-  //     },
-  //     (error) => {
-  //       console.log(error.error[0].description);
-  //     }
-  //   );
-  //   this.table.renderRows();
-  // }
   deleteRowData(data) {
     this.userS.deleteUser(data.id).subscribe(
       (result) => {
@@ -110,7 +105,7 @@ export class UsersComponent implements OnInit {
     this.userListMatTabDataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  addUser(){
+  addUser() {
     this.router.navigateByUrl('/registration');
   }
   onMatSortChange() {

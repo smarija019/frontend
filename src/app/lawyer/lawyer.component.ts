@@ -13,17 +13,17 @@ import { AuthService } from '../auth.service';
 })
 export class LawyerComponent implements OnInit {
   lawyer = {
-      user_id:null,
-      lawsuit_id:0
+    user_id: null,
+    lawsuit_id: 0,
   };
   dataSource;
   userListMatTabDataSource = new MatTableDataSource<any>(this.dataSource);
   userDetails;
   myLawsuitsData = new MatTableDataSource<any>(this.dataSource);
-  showhideMyLawsuits=false;
+  showhideMyLawsuits = false;
   ngOnInit(): void {
     this.getLawyers();
-    if (localStorage.getItem('token') != null){
+    if (localStorage.getItem('token') != null) {
       this.service.getUserProfile().subscribe(
         (res) => {
           this.userDetails = res;
@@ -62,11 +62,21 @@ export class LawyerComponent implements OnInit {
     return obs;
   }
 
-  displayedColumns: string[] = ['id', 'firstName', 'lastName','procedure_id', 'action'];
+  displayedColumns: string[] = [
+    'id',
+    'firstName',
+    'lastName',
+    'procedure_id',
+    'action',
+  ];
 
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  constructor(public dialog: MatDialog, private lawyerS: LawyerService, private service: AuthService) {}
+  constructor(
+    public dialog: MatDialog,
+    private lawyerS: LawyerService,
+    private service: AuthService
+  ) {}
 
   openDialog(action, obj) {
     obj.action = action;
