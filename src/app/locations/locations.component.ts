@@ -3,6 +3,7 @@ import { LocationDialogboxComponent } from '../location-dialogbox/location-dialo
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { LocationService } from '../services/location.service';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-locations',
@@ -37,6 +38,7 @@ export class LocationsComponent implements OnInit {
   displayedColumns: string[] = ['id', 'location', 'action'];
 
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
   constructor(public dialog: MatDialog, private locationS: LocationService) {}
 
   openDialog(action, obj) {
@@ -95,5 +97,8 @@ export class LocationsComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.userListMatTabDataSource.filter = filterValue.trim().toLowerCase();
+  }
+  onMatSortChange() {
+    this.userListMatTabDataSource.sort = this.sort;
   }
 }

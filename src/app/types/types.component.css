@@ -1,5 +1,6 @@
-.wrapper {
-  width: 50%;
+.wrapper{
+    
+  width:50%;
 }
 .table-heading {
   margin: 10px 0;
@@ -12,7 +13,7 @@
 .table-heading button {
   float: left;
 }
-.custom-table {
+.custom-table{
   margin: auto;
   width: 100%;
 }
@@ -20,12 +21,18 @@
   color: blue;
   cursor: pointer;
 }
-.custom-thead {
+.custom-thead{
   text-align: center !important;
 }
-.custom-container {
-  text-align: center !important;
+.custom-container{
+
+  text-align: center!important;
 }
-.add-button {
+.add-button{
   margin-right: 2%;
+}
+.th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+padding: 12px;
 }

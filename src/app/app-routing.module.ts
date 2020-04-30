@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth/auth.guard';
 import { LawsuitsComponent } from './lawsuits/lawsuits.component';
 import { UsersComponent } from './users/users.component';
+import { LawyerComponent } from './lawyer/lawyer.component';
 
 
 const routes: Routes = [ 
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path: 'companies', component: CompaniesComponent, canActivate: [AuthGuard],data :{permittedRoles:['admin']}},
   { path: 'contacts', component: ContactsComponent, canActivate: [AuthGuard],data :{permittedRoles:['admin']}},
   { path: 'types', component: TypesComponent, canActivate: [AuthGuard],data :{permittedRoles:['admin']}},
-  { path: 'lawsuits', component: LawsuitsComponent, canActivate: [AuthGuard],data :{permittedRoles:['admin','customer']}}
+  { path: 'lawsuits', component: LawsuitsComponent, canActivate: [AuthGuard],data :{permittedRoles:['admin','customer']}},
+  { path: 'lawyers', component: LawyerComponent, canActivate: [AuthGuard],data :{permittedRoles:['admin','customer']}}
 
 ];
 

@@ -43,10 +43,9 @@ import { UsersComponent } from './users/users.component';
 import { UserDialogboxComponent } from './user-dialogbox/user-dialogbox.component';
 import { LawsuitDialogboxComponent } from './lawsuit-dialogbox/lawsuit-dialogbox.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-
-
-
+import {MatSortModule} from '@angular/material/sort';
+import { LawyerComponent } from './lawyer/lawyer.component';
+import { LawyerDialogboxComponent } from './lawyer-dialogbox/lawyer-dialogbox.component';
 
 
 @NgModule({
@@ -68,7 +67,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ContactDialogboxComponent,
     UsersComponent,
     UserDialogboxComponent,
-    LawsuitDialogboxComponent
+    LawsuitDialogboxComponent,
+    LawyerComponent,
+    LawyerDialogboxComponent
 
   ],
   imports: [
@@ -97,6 +98,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatInputModule,
     MatTableModule,
     NgbModule,
+    MatSortModule,
+    BrowserModule,
+    MatTableModule,
 
   ],
   providers: [ApiService,{

@@ -6,6 +6,7 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { CompanyService } from '../services/company.service';
 import { CompanyDialogboxComponent } from '../company-dialogbox/company-dialogbox.component';
+import { MatSort } from '@angular/material/sort';
 
 
 @Component({
@@ -41,6 +42,7 @@ export class CompaniesComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name','address', 'action'];
 
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
   constructor(public dialog: MatDialog, private companyS: CompanyService) {}
 
   openDialog(action, obj) {
@@ -101,5 +103,8 @@ export class CompaniesComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.userListMatTabDataSource.filter = filterValue.trim().toLowerCase();
+  }
+  onMatSortChange() {
+    this.userListMatTabDataSource.sort = this.sort;
   }
 }

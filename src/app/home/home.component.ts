@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
       this.service.getUserProfile().subscribe(
         (res) => {
           this.userDetails = res;
-          console.log(this.userDetails);
+          console.log(this.userDetails.userId +'detalji');
         },
         (err) => {
           console.log(err);

@@ -3,6 +3,7 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { LawsuitDialogboxComponent } from '../lawsuit-dialogbox/lawsuit-dialogbox.component';
 import { LawsuitService } from '../services/lawsuit.service';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-lawsuits',
@@ -58,6 +59,7 @@ export class LawsuitsComponent implements OnInit {
     'action',
   ];
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
   constructor(public dialog: MatDialog, private lawsuitS: LawsuitService) {}
 
   openDialog(action, obj) {
@@ -107,7 +109,10 @@ export class LawsuitsComponent implements OnInit {
     this.table.renderRows();
   }
   updateRowData(data) {
-    this.lawsuit.date =
+
+    if(data.dateChanged)
+    {
+      this.lawsuit.date =
       data.date.toLocaleDateString('fr-CA').replace(/\//g, '-') +
       'T' +
       data.time.hour +
@@ -115,6 +120,17 @@ export class LawsuitsComponent implements OnInit {
       data.time.minute +
       ':' +
       data.time.second;
+    }
+    else{
+      this.lawsuit.date =
+      data.date +       'T' +
+      data.time.hour +
+      ':' +
+      data.time.minute +
+      ':' +
+      data.time.second;
+    }
+
     this.lawsuit.location = data.location;
     this.lawsuit.judge = data.judge;
     this.lawsuit.inst_type = data.inst_type;
@@ -124,6 +140,7 @@ export class LawsuitsComponent implements OnInit {
     this.lawsuit.defendant = data.defendant;
     this.lawsuit.note = data.note;
     this.lawsuit.procedure_type = data.procedure_type;
+    console.log(this.lawsuit);
     this.lawsuitS.putLawsuit(data.id, this.lawsuit).subscribe(
       (result) => {
         this.userListMatTabDataSource.data = this.lawsuitS.serviceRes;
@@ -148,5 +165,8 @@ export class LawsuitsComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.userListMatTabDataSource.filter = filterValue.trim().toLowerCase();
+  }
+  onMatSortChange() {
+    this.userListMatTabDataSource.sort = this.sort;
   }
 }

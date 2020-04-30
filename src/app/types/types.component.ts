@@ -3,6 +3,7 @@ import { MatTableDataSource, MatTable } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogboxComponent } from '../dialogbox/dialogbox.component';
 import { TypeService } from '../services/type.service';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-types',
@@ -37,6 +38,7 @@ export class TypesComponent implements OnInit {
   displayedColumns: string[] = ['id', 'type', 'action'];
 
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
   constructor(public dialog: MatDialog, private typeS: TypeService) {}
 
   openDialog(action, obj) {
@@ -95,6 +97,9 @@ export class TypesComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.userListMatTabDataSource.filter = filterValue.trim().toLowerCase();
+  }
+  onMatSortChange() {
+    this.userListMatTabDataSource.sort = this.sort;
   }
 
 }

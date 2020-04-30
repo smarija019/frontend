@@ -4,6 +4,7 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { UserDialogboxComponent } from '../user-dialogbox/user-dialogbox.component';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-users',
@@ -41,6 +42,7 @@ export class UsersComponent implements OnInit {
   displayedColumns: string[] = ['id', 'Role','FirstName','LastName','UserName','Email', 'action'];
 
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
   constructor(public dialog: MatDialog, private userS: UserService, private router: Router) {}
 
   openDialog(action, obj) {
@@ -110,5 +112,8 @@ export class UsersComponent implements OnInit {
 
   addUser(){
     this.router.navigateByUrl('/registration');
+  }
+  onMatSortChange() {
+    this.userListMatTabDataSource.sort = this.sort;
   }
 }

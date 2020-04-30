@@ -4,6 +4,7 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ContactDialogboxComponent } from '../contact-dialogbox/contact-dialogbox.component';
 import { CompanyService } from '../services/company.service';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-contacts',
@@ -55,6 +56,7 @@ export class ContactsComponent implements OnInit {
   ];
 
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
   constructor(public dialog: MatDialog, private contactS: ContactService) {}
 
   openDialog(action, obj) {
@@ -127,5 +129,8 @@ export class ContactsComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.userListMatTabDataSource.filter = filterValue.trim().toLowerCase();
+  }
+  onMatSortChange() {
+    this.userListMatTabDataSource.sort = this.sort;
   }
 }
